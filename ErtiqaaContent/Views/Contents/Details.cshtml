@@ -1,0 +1,82 @@
+﻿@model ErtiqaaContent.Models.Content
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Content</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleHeader)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleHeader)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleSubHeader)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleSubHeader)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleMainText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleMainText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleSubText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleSubText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleSubImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleSubImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ButtonText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ButtonText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SectionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SectionId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

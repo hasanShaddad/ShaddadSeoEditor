@@ -1,0 +1,80 @@
+﻿
+<div class="container">
+    <div class="row webdesign">
+        
+        <div class="col-md-12 webdesign-col-2 text-left">
+
+            <span id="shaddad">
+
+
+            </span>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <input type="button" id="space" onclick="insertAtCaret('0122523430', '&nbsp;', 0)" value="space" />
+            <input type="button" id="spanred" onclick="insertAtCaret('0122523430', '<span style=' + 'color:red;' + '></span>', 7)" value="span red" />
+            <input type="button" id="paragraph" onclick="insertAtCaret('0122523430', '<p></p>', 4)" value="p" />
+            <input type="button" id="H1text" onclick="insertAtCaret('0122523430', '<h1></h1>', 5)" value="H1" />
+            <div class="col-md-10">
+                <TextArea id="0122523430"></TextArea>
+
+            </div>
+    </div>
+</div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
+        function insertAtCaret(areaId, text,FocusNo) {
+    var txtarea = document.getElementById(areaId);
+    var scrollPos = txtarea.scrollTop;
+    var strPos = 0;
+    var br = ((txtarea.selectionStart || txtarea.selectionStart == '0') ?
+        "ff" : (document.selection ? "ie" : false));
+    if (br == "ie") {
+        txtarea.focus();
+        var range = document.selection.createRange();
+        range.moveStart('character', -txtarea.value.length);
+        strPos = range.text.length;
+    }
+    else if (br == "ff") strPos = txtarea.selectionStart;
+
+    var front = (txtarea.value).substring(0, strPos);
+    var back = (txtarea.value).substring(strPos, txtarea.value.length);
+    txtarea.value = front + text + back;
+    strPos = strPos + text.length;
+    if (br == "ie") {
+        txtarea.focus();
+        var range = document.selection.createRange();
+        range.moveStart('character', -txtarea.value.length);
+        range.moveStart('character', strPos);
+        range.moveEnd('character', 0);
+        range.select();
+    }
+    else if (br == "ff") {
+        txtarea.selectionStart = strPos;
+        txtarea.selectionEnd = strPos;
+        txtarea.focus();
+    }
+    txtarea.scrollTop = scrollPos;
+
+
+    var endtext = txtarea.value.length - FocusNo;
+    txtarea.setSelectionRange(strPos, endtext); // Highlights "Cup"
+    txtarea.focus();
+
+}
+        </script>
+        <script>
+        $(document).ready(function () {
+
+            $('#0122523430').keyup(function () {
+                $('#shaddad').html($(this).val());
+            });
+
+        });
+        </script>
+    }

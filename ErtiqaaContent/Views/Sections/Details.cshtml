@@ -1,0 +1,74 @@
+﻿@model ErtiqaaContent.Models.Section
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Section</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SectionHeader)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SectionHeader)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SectionSubHeader)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SectionSubHeader)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SectionMainText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SectionMainText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SectionSubText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SectionSubText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SectionImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SectionImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SectionSubImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SectionSubImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ButtonText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ButtonText)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

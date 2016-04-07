@@ -1,0 +1,124 @@
+﻿<link href="~/Content/ErtiqaaCss/ErtiqaaEditor.css" rel="stylesheet" />
+<div class="container">
+    <div class="allaround">
+      <div class="row">
+          <div class="col-lg-12">
+              <div >
+                  <canvas id="canvas" height="150" width="800"></canvas>
+              </div>
+          </div>
+      </div>
+       
+        <div class="row" style="border:2px solid gray;">
+           
+                <div class="span6">
+
+                    <div class="col-md-6">
+
+                        <label id="analyseslabel1"><span style="font-size:large;"></span></label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label id="analyseslinklabel"></label>
+                    </div>
+
+                    <div class="col-md-12">
+                        <br />
+                        <label id="analyseslabel2"></label>
+                    </div>
+
+                </div>
+             
+            </div>
+        
+ 
+                    <div class="row">
+                        <div class="span6">
+                            <div class="col-md-12" style="padding-right: 0px; padding-left: 0px;" >
+
+                                <input type="button" class="colorb" id="spanred" onclick="colorTag('your text here', 27)" value=" " />
+                                <input type="button" class="alignl" id="paragraph-l" onclick="SelectionTag('<p align=' + 'left' + '>', '</p>', 14, 'your text here')" value=" " />
+                                <input type="button" class="alignc" id="paragraph-c" onclick="SelectionTag('<p align=' + 'center' + '>', '</p>', 16, 'your text here')" value=" " />
+                                <input type="button" class="alignr" id="paragraph-r" onclick="SelectionTag('<p align=' + 'right' + '>', '</p>', 15, 'your text here')" value=" " />
+                                <input type="button" class="TagButton" id="paragraph" onclick="SelectionTag('<p>', '</p>', 3, 'your text here')" value="P" />
+                                <input type="button" class="TagButton" id="H1text" onclick="SelectionTag('<h1>', '</h1>', 4, 'your text here')" value="H1" />
+                                <input type="button" class="TagButton" id="H2text" onclick="SelectionTag('<h2>', '</h2>', 4, 'your text here')" value="H2" />
+                                <input type="button" class="TagButton" id="H3text" onclick="SelectionTag('<h3>', '</h3>', 4, 'your text here')" value="H3" />
+                                <input type="button" class="TagButton" id="H4text" onclick="SelectionTag('<h4>', '</h4>', 4,'your text here')" value="H4" />
+                                <input type="button" class="spaceb" id="space" onclick="SelectionTag('&nbsp;', '', 1,'')" value=" " />
+                                <input type="button" class="TagButton" id="Nline" onclick="SelectionTag('<Br/>', '', 5,'')" value="/n" />
+                                <input type="button" class="linkbutton" id="addlink" onclick="insertLink('0122523430')" value=" " />
+                                <br />
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="span6">
+                            <div class="col-md-12 text-center" style="padding-right: 0px; padding-left: 0px;">
+                                <textarea rows="2" id="keywords" style="min-width: 100%">add,your,keywords,here</textarea>
+                                <textarea rows="6" id="0122523430" style="min-width: 100%"></textarea>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="row webdesign">
+                        <div class="col-md-12 webdesign-col-2 text-left" style="padding-right: 0px; padding-left: 0px;">
+                            <span id="shaddad">
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+   
+
+                <script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+
+                <script src="~/Scripts/ErtiqaaJs/ErtiqaaEditor.js"></script>
+    <script src="~/Scripts/ErtiqaaJs/Chart.js"></script>
+
+
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            //  الحدث كى اب  بتاع  للتكست اريا بتاعت التوول
+            $('#0122523430').keyup(function () {
+                //دى الفنكشن الى بتكتب الأناليسيز فى الديف الى فوق
+                AnalysesFun('0122523430', 'hassan', 'keywords');
+                //دى الفنكشن الى بتنقل الحروف  و تكتبها فى الديف  و السبان بتاع عرض الداتا
+                $('#shaddad').html($(this).val());
+                //دى الفنكشن الى بتنقل الحروف و تكتبها فى التكست اريا بتاعت العميل علشان الداتا بيز
+                $('.EditorFormControl').html($(this).val());
+          //هنا بنعرف متغير ياخد الدوال الى راجعة من الفنكشن بتاعت الأناليسيز واحدة للكلمات و التانية للقيم
+        var analyses = AnalysesFun('0122523430', 'hassan', 'keywords');
+                //دى داتا للرسم البيانى
+        var barChartData = {
+            //دى الأرى بتاعت الكلمات
+	    labels: analyses[0],
+		datasets : [
+			{
+                //دى الوان التشارت
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,0.8)",
+				highlightFill: "rgba(220,220,220,0.75)",
+				highlightStroke: "rgba(220,220,220,1)",
+                //دى الأرى بتاعت القيم
+				data: analyses[1]
+			} 
+		]
+
+	}
+	 //هنا هنبعت البيانات للأسكريبت بتاع الرسم البيانى
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myBar = new Chart(ctx).Bar(barChartData, {
+			responsive : true
+		});
+ 
+            });
+
+
+        });
+    </script>

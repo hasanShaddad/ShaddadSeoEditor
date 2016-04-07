@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ErtiqaaContent.Models.Section>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SectionHeader)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SectionSubHeader)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SectionMainText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SectionSubText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SectionImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SectionSubImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ButtonText)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SectionHeader)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SectionSubHeader)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SectionMainText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SectionSubText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SectionImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SectionSubImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ButtonText)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
